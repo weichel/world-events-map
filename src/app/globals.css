@@ -48,3 +48,47 @@ a {
   height: 100%;
   z-index: 1;
 }
+
+.event-marker-wrap {
+  background: transparent !important;
+  border: none !important;
+}
+
+.event-marker {
+  background: var(--marker-color, #52c41a);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.shape-circle {
+  border-radius: 999px;
+}
+
+.shape-square {
+  border-radius: 2px;
+}
+
+.shape-diamond {
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+
+.shape-triangle {
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 14px solid var(--marker-color, #52c41a);
+  background: transparent;
+  border-top: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.shape-pentagon {
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.shape-star {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
