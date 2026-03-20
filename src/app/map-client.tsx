@@ -9,8 +9,8 @@ type EventItem = {
   source: string;
   url?: string;
   time?: string;
-  lat: number;
-  lon: number;
+  lat?: number;
+  lon?: number;
   importance: number;
 };
 
@@ -73,7 +73,8 @@ export default function MapClient({ items }: { items: EventItem[] }) {
     const L = LRef.current;
 
     layerRef.current.clearLayers();
-    for (const e of items.slice(0, 800)) {
+    for (const e of items.slice(0, 1200)) {
+      if (e.lat == null || e.lon == null) continue;
       const color = e.importance > 70 ? "#ff4d4f" : e.importance > 50 ? "#faad14" : "#52c41a";
       const marker = L.circleMarker([e.lat, e.lon], {
         radius: Math.max(4, Math.min(14, e.importance / 10)),
