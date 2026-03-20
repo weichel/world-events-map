@@ -76,13 +76,14 @@ export default function Home() {
           <div style={{ fontWeight: 700, marginBottom: 8 }}>Map legend</div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10 }}>
             <div>
-              <div style={{ marginBottom: 6, opacity: 0.9 }}>Source → shape</div>
-              <div>● USGS</div>
-              <div>◆ EMSC</div>
-              <div>▲ GDACS</div>
-              <div>■ NASA EONET</div>
-              <div>⬟ ReliefWeb</div>
-              <div>★ GDELT</div>
+              <div style={{ marginBottom: 6, opacity: 0.9 }}>Disaster type → shape</div>
+              <div>◆ Earthquake</div>
+              <div>▲ Volcano</div>
+              <div>● Storm / Cyclone / Hurricane</div>
+              <div>★ Wildfire</div>
+              <div>■ Flood</div>
+              <div>⬟ Drought</div>
+              <div>● Other / mixed events</div>
             </div>
             <div>
               <div style={{ marginBottom: 6, opacity: 0.9 }}>Severity → color</div>

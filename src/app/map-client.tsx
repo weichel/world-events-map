@@ -16,14 +16,15 @@ type EventItem = {
   importance: number;
 };
 
-function shapeForSource(source: string): string {
-  const s = source.toLowerCase();
-  if (s.includes("usgs")) return "shape-circle";
-  if (s.includes("emsc")) return "shape-diamond";
-  if (s.includes("gdacs")) return "shape-triangle";
-  if (s.includes("eonet")) return "shape-square";
-  if (s.includes("reliefweb")) return "shape-pentagon";
-  if (s.includes("gdelt")) return "shape-star";
+function shapeForCategory(category: string): string {
+  const c = (category || "").toLowerCase();
+  if (c.includes("earthquake")) return "shape-diamond";
+  if (c.includes("volcano")) return "shape-triangle";
+  if (c.includes("storm") || c.includes("cyclone") || c.includes("hurricane")) return "shape-circle";
+  if (c.includes("wildfire") || c.includes("fire")) return "shape-star";
+  if (c.includes("flood")) return "shape-square";
+  if (c.includes("drought")) return "shape-pentagon";
+  if (c.includes("humanitarian") || c.includes("conflict") || c.includes("news")) return "shape-square";
   return "shape-circle";
 }
 
@@ -95,7 +96,7 @@ export default function MapClient({ items }: { items: EventItem[] }) {
     layerRef.current.clearLayers();
     for (const e of items.slice(0, 1200)) {
       if (e.lat == null || e.lon == null) continue;
-      const shapeClass = shapeForSource(e.source);
+      const shapeClass = shapeForCategory(e.category);
       const { color, label } = colorForSeverity(e.severity ?? e.importance ?? 0);
       const size = Math.max(10, Math.min(22, (e.importance ?? 40) / 4));
 
