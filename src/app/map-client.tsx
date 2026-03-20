@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type EventItem = {
   id: string;
@@ -19,6 +19,7 @@ export default function MapClient({ items }: { items: EventItem[] }) {
   const mapRef = useRef<any>(null);
   const layerRef = useRef<any>(null);
   const LRef = useRef<any>(null);
+  const [mapReady, setMapReady] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -36,6 +37,7 @@ export default function MapClient({ items }: { items: EventItem[] }) {
 
       mapRef.current = map;
       layerRef.current = L.layerGroup().addTo(map);
+      setMapReady(true);
     })();
 
     return () => {
@@ -44,12 +46,13 @@ export default function MapClient({ items }: { items: EventItem[] }) {
         mapRef.current.remove();
         mapRef.current = null;
         layerRef.current = null;
+        setMapReady(false);
       }
     };
   }, []);
 
   useEffect(() => {
-    if (!layerRef.current || !LRef.current) return;
+    if (!mapReady || !layerRef.current || !LRef.current) return;
     const L = LRef.current;
 
     layerRef.current.clearLayers();
@@ -69,7 +72,7 @@ export default function MapClient({ items }: { items: EventItem[] }) {
       );
       marker.addTo(layerRef.current);
     }
-  }, [items]);
+  }, [items, mapReady]);
 
   return <div ref={ref} style={{ height: "70vh", width: "100%", borderRadius: 10, overflow: "hidden" }} />;
 }
