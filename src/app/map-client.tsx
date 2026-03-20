@@ -30,18 +30,27 @@ export default function MapClient({ items }: { items: EventItem[] }) {
       if (!alive || !ref.current) return;
 
       LRef.current = L;
+      const worldBounds = L.latLngBounds(
+        L.latLng(-85, -180),
+        L.latLng(85, 180),
+      );
+
       const map = L.map(ref.current, {
         worldCopyJump: false,
-        maxBounds: [
-          [-85, -180],
-          [85, 180],
-        ],
-        maxBoundsViscosity: 1,
+        maxBounds: worldBounds,
+        maxBoundsViscosity: 1.0,
+        minZoom: 2,
+        maxZoom: 10,
       }).setView([20, 0], 2);
+
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
         noWrap: true,
+        bounds: worldBounds,
       }).addTo(map);
+
+      map.setMaxBounds(worldBounds);
+      map.fitBounds(worldBounds);
 
       mapRef.current = map;
       layerRef.current = L.layerGroup().addTo(map);
