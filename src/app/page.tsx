@@ -79,11 +79,12 @@ export default function Home() {
               <div style={{ marginBottom: 6, opacity: 0.9 }}>Disaster type → shape</div>
               <div>◆ Earthquake</div>
               <div>▲ Volcano</div>
+              <div>★ Wildfire / fire</div>
               <div>● Storm / Cyclone / Hurricane</div>
-              <div>★ Wildfire</div>
               <div>■ Flood</div>
               <div>⬟ Drought</div>
-              <div>● Other / mixed events</div>
+              <div>⬢ Humanitarian / conflict / news</div>
+              <div>🛑 Other / mixed events</div>
             </div>
             <div>
               <div style={{ marginBottom: 6, opacity: 0.9 }}>Severity → color</div>

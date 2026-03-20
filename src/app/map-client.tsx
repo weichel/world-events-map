@@ -20,12 +20,12 @@ function shapeForCategory(category: string): string {
   const c = (category || "").toLowerCase();
   if (c.includes("earthquake")) return "shape-diamond";
   if (c.includes("volcano")) return "shape-triangle";
-  if (c.includes("storm") || c.includes("cyclone") || c.includes("hurricane")) return "shape-circle";
   if (c.includes("wildfire") || c.includes("fire")) return "shape-star";
+  if (c.includes("storm") || c.includes("cyclone") || c.includes("hurricane")) return "shape-circle";
   if (c.includes("flood")) return "shape-square";
   if (c.includes("drought")) return "shape-pentagon";
-  if (c.includes("humanitarian") || c.includes("conflict") || c.includes("news")) return "shape-square";
-  return "shape-circle";
+  if (c.includes("humanitarian") || c.includes("conflict") || c.includes("news")) return "shape-hex";
+  return "shape-octagon";
 }
 
 function colorForSeverity(severity = 0): { color: string; label: string } {
