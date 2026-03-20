@@ -66,6 +66,9 @@ export default function Home() {
               <div style={{ fontSize: 13, opacity: 0.8 }}>
                 {e.category} · {e.source} · importance {e.importance?.toFixed?.(1) ?? "n/a"}
               </div>
+              <div style={{ fontSize: 12, opacity: 0.7 }}>
+                {e.time ? new Date(e.time).toLocaleString() : "timestamp unavailable"}
+              </div>
             </a>
           ))}
         </div>
