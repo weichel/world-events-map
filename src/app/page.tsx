@@ -63,6 +63,37 @@ export default function Home() {
 
         {loading ? <p>Loading events...</p> : <MapClient items={items} />}
 
+        <div
+          style={{
+            marginTop: 12,
+            border: "1px solid #2a2a2a",
+            borderRadius: 8,
+            padding: 10,
+            background: "#101010",
+            fontSize: 13,
+          }}
+        >
+          <div style={{ fontWeight: 700, marginBottom: 8 }}>Map legend</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 10 }}>
+            <div>
+              <div style={{ marginBottom: 6, opacity: 0.9 }}>Source → shape</div>
+              <div>● USGS</div>
+              <div>◆ EMSC</div>
+              <div>▲ GDACS</div>
+              <div>■ NASA EONET</div>
+              <div>⬟ ReliefWeb</div>
+              <div>★ GDELT</div>
+            </div>
+            <div>
+              <div style={{ marginBottom: 6, opacity: 0.9 }}>Severity → color</div>
+              <div><span style={{ color: "#52c41a" }}>●</span> Low (&lt; 40)</div>
+              <div><span style={{ color: "#fadb14" }}>●</span> Moderate (40–59)</div>
+              <div><span style={{ color: "#fa8c16" }}>●</span> High (60–79)</div>
+              <div><span style={{ color: "#ff4d4f" }}>●</span> Critical (80+)</div>
+            </div>
+          </div>
+        </div>
+
         <h3 style={{ marginTop: 20 }}>Source status</h3>
         <div style={{ display: "grid", gap: 8, marginBottom: 10 }}>
           {sources.map((s) => (
