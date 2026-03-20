@@ -7,6 +7,7 @@ type EventItem = {
   title: string;
   category: string;
   source: string;
+  sourceType?: "api" | "rss";
   url?: string;
   time?: string;
   lat?: number;
@@ -107,9 +108,9 @@ export default function MapClient({ items }: { items: EventItem[] }) {
 
       const marker = L.marker([e.lat, e.lon], { icon });
       marker.bindPopup(
-        `<div style="min-width:240px"><strong>${e.title}</strong><br/>${e.category} · ${e.source}<br/>importance: ${e.importance.toFixed(
-          1,
-        )}<br/>Shape: ${shapeClass.replace("shape-", "")}<br/>Severity color: ${label} (${e.severity ?? "n/a"})${
+        `<div style="min-width:240px"><strong>${e.title}</strong><br/>${e.category} · ${e.source}<br/>Source type: ${
+          e.sourceType ? e.sourceType.charAt(0).toUpperCase() + e.sourceType.slice(1) : "Unknown"
+        }<br/>importance: ${e.importance.toFixed(1)}<br/>Shape: ${shapeClass.replace("shape-", "")}<br/>Severity color: ${label} (${e.severity ?? "n/a"})${
           e.time ? `<br/>${new Date(e.time).toUTCString()}` : ""
         }${e.url ? `<br/><a href='${e.url}' target='_blank' rel='noreferrer'>source link</a>` : ""}</div>`,
       );
