@@ -30,9 +30,17 @@ export default function MapClient({ items }: { items: EventItem[] }) {
       if (!alive || !ref.current) return;
 
       LRef.current = L;
-      const map = L.map(ref.current).setView([20, 0], 2);
+      const map = L.map(ref.current, {
+        worldCopyJump: false,
+        maxBounds: [
+          [-85, -180],
+          [85, 180],
+        ],
+        maxBoundsViscosity: 1,
+      }).setView([20, 0], 2);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "&copy; OpenStreetMap contributors",
+        noWrap: true,
       }).addTo(map);
 
       mapRef.current = map;

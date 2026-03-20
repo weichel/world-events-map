@@ -67,7 +67,7 @@ export default function Home() {
                 {e.category} · {e.source} · importance {e.importance?.toFixed?.(1) ?? "n/a"}
               </div>
               <div style={{ fontSize: 12, opacity: 0.7 }}>
-                {e.time ? new Date(e.time).toLocaleString() : "timestamp unavailable"}
+                Time: {e.time ? new Date(e.time).toUTCString() : "timestamp unavailable"}
               </div>
             </a>
           ))}
