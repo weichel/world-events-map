@@ -96,6 +96,17 @@ export default function Home() {
           </div>
         </div>
 
+        <h3 style={{ marginTop: 20 }}>Satellite map integration</h3>
+        <div style={{ border: "1px solid #2a2a2a", borderRadius: 8, overflow: "hidden", background: "#0b0b0b" }}>
+          <iframe
+            src="https://satellitemap.space/"
+            title="Satellite Map"
+            style={{ width: "100%", height: "560px", border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+
         <h3 style={{ marginTop: 20 }}>Source status</h3>
         <div style={{ display: "grid", gap: 8, marginBottom: 10 }}>
           {sources.map((s) => (
